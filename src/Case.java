@@ -1,10 +1,7 @@
-import java.util.List;
-
 public class Case {
     protected boolean contientBombe;
     protected boolean estDecouverte;
     protected boolean estMarque;
-    private List<CaseIntelligente> lesVoisines;
 
     public Case(){
         this.contientBombe = false;
