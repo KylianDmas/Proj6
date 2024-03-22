@@ -23,11 +23,32 @@ public class Plateau{
     }
     private void rendLesCasesIntelligentes(){
         for(int cpt=0;cpt<this.nbColonnes*this.nbLignes;++cpt){
-            CaseIntelligente val = new CaseIntelligente();
-            this.lePlateau.add(val);
+            Case asec = lePlateau.get(cpt);
+            CaseIntelligente casei = new CaseIntelligente();
+            casei.contientBombe = asec.contientBombe;
+            casei.estDecouverte = asec.estDecouverte;
+            casei.estMarque = asec.estMarque;
+
+            for(int i=0; i<this.nbLignes;i++){
+                for(int j=0; j<this.nbColonnes;j++){
+                    if(this.estVoisine(i-1, j-1)){casei.ajouteVoisine(getCase(i-1, j-1));}
+                    if(this.estVoisine(i-1, j)){casei.ajouteVoisine(getCase(i-1, j));}
+                    if(this.estVoisine(i-1, j+1)){casei.ajouteVoisine(getCase(i-1, j+1));}
+                    if(this.estVoisine(i, j-1)){casei.ajouteVoisine(getCase(i, j-1));}
+                    if(this.estVoisine(i, j+1)){casei.ajouteVoisine(getCase(i, j+1));}
+                    if(this.estVoisine(i+1, j-1)){casei.ajouteVoisine(getCase(i+1, j-1));}
+                    if(this.estVoisine(i+1, j)){casei.ajouteVoisine(getCase(i+1, j));}
+                    if(this.estVoisine(i+1, j+1)){casei.ajouteVoisine(getCase(i+1, j+1));}
+                }
+            }
+            this.lePlateau.add(cpt, casei);
         }
     }
 
+    public boolean estVoisine(int i, int j){
+        if(i>nbLignes || j>nbColonnes){return false;}
+        return true;
+    }
 
     protected void poseDesBombesAleatoirement(){
         Random generateur = new Random();
