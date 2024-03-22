@@ -53,6 +53,16 @@ public class Plateau{
         return this.lePlateau.get(l*c);
     }
     public int getNbCasesMarquees(){
-        for
+        int nb = 0;
+        for(int cpt = 0; cpt < this.nbColonnes*this.nbLignes;++cpt){
+            if(lePlateau.get(cpt).estMarque()){nb++;}}
+        return nb;
+    }
+
+    public void poseBombe(int x, int y){
+        this.getCase(x, y).poseBombe();}
+
+    public void reset(){
+        
     }
 }
