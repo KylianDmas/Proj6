@@ -21,17 +21,38 @@ public class Plateau{
             this.lePlateau.add(val);
         }
     }
+    private void rendLesCasesIntelligentes(){
+        for(int cpt=0;cpt<this.nbColonnes*this.nbLignes;++cpt){
+            CaseIntelligente val = new CaseIntelligente();
+            this.lePlateau.add(val);
+        }
+    }
+
 
     protected void poseDesBombesAleatoirement(){
         Random generateur = new Random();
         for (int x = 0; x < this.getNbLignes(); x++){
             for (int y = 0; y < this.getNbColonnes(); y++){
-                if (generateur.nextInt(100)+1 < this.pourcentageDeBombes){
+                if (generateur.nextInt(100)+1 < this.percentBombe){
                     this.poseBombe(x, y);
                     this.nbBombes = this.nbBombes + 1;
                 }
             }
         }
     }
-
+    public int getNbLignes(){
+        return this.nbLignes;
+    }
+    public int getNbColonnes(){
+        return this.nbColonnes;
+    }
+    public int getNbTotalBombes(){
+        return this.nbBombes;
+    }
+    public Case getCase(int l, int c){
+        return this.lePlateau.get(l*c);
+    }
+    public int getNbCasesMarquees(){
+        for
+    }
 }
