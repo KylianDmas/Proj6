@@ -18,7 +18,7 @@ public class Plateau{
     private void creerLesCasesVides(){
         for(int cpt=0;cpt<this.nbColonnes*this.nbLignes;++cpt){
             Case val = new Case();
-            this.lePlateau.add(val);
+            this.lePlateau.add(cpt, val);
         }
     }
     private void rendLesCasesIntelligentes(){
@@ -63,6 +63,6 @@ public class Plateau{
         this.getCase(x, y).poseBombe();}
 
     public void reset(){
-        
+        creerLesCasesVides();
     }
 }

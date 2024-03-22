@@ -4,6 +4,20 @@ public class Demineur extends Plateau{
     private boolean gameOver;
     private int score;
 
+    public Demineur(int nbl, int nbc, int percent){
+        super(nbl, nbc, percent);
+    }
+
+    public void reveler(int x, int y){
+        this.getCase(x, y).reveler();
+    }
+
+    public int marquer(int x, int y){
+        this.getCase(x, y).marquer();
+        this.score++;
+        return this.score;
+    }
+
     public void affiche(){
         System.out.println("JEU DU DEMINEUR");
         // affichage de la bordure supérieure
